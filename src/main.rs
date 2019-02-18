@@ -1,35 +1,49 @@
 
 
+//mod util;
+//mod imp;
+//mod lie;
+
+mod vec;
+mod mat;
+mod lie;
+
 use std::f32;
-use std::ops::Div;
 
-#[derive(Copy, Clone)]
-pub struct Vec3 {
-    x: f32,
-    y: f32,
-    z: f32,
+use lie::{SO3};
+use vec::{Vec3};
+use mat::{Mat3};
+
+//use crate::util::{todo};
+
+
+
+
+
+struct Ang3 {
+
 }
 
-impl Vec3 {
-    fn norm(self) -> f32 {
-        (self.x * self.x + self.y * self.y + self.z * self.z).sqrt()
+
+
+impl From<Vec3> for Ang3 {
+    fn from(v: Vec3) -> Self {
+//        todo()
+        panic!("")
     }
 
-    fn normalize(self) -> Self {
-        self / self.norm()
-    }
 }
 
-pub struct Mat3 {
-    r1: Vec3,
-    r2: Vec3,
-    r3: Vec3,
+
+
+pub struct RotMat3 {
+    m: Mat3
 }
 
-impl Div<f32> for Vec3{
-    type Output = Self;
-    fn div(self, other: f32) -> Self::Output {
-        Self::Output {x: self.x / other, y: self.y / other, z: self.z / other}
+impl RotMat3 {
+    fn log() -> Self {
+//        todo()
+        panic!("")
     }
 }
 
