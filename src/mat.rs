@@ -6,9 +6,9 @@ use crate::vec::{Vec3, Vec4};
 
 
 pub struct Mat3 {
-    r1: Vec3,
-    r2: Vec3,
-    r3: Vec3,
+    pub r1: Vec3,
+    pub r2: Vec3,
+    pub r3: Vec3,
 }
 
 impl Mat3 {
@@ -26,4 +26,16 @@ pub struct Mat4 {
     r2: Vec4,
     r3: Vec4,
     r4: Vec4
+
 }
+
+impl Mat4 {
+    fn is_SO3(self)-> bool {
+        panic!("")
+    }
+
+    fn frob_norm(self) -> f32 {
+        panic!("")
+    }
+}
+

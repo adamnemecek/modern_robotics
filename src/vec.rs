@@ -4,16 +4,16 @@
 //mod crate::util::;
 
 //use crate::util::{todo};
-use crate::lie::{SO3};
+use crate::lie::{so3};
 
 use std::ops::Div;
 
 
 #[derive(Copy, Clone)]
 pub struct Vec3 {
-    x: f32,
-    y: f32,
-    z: f32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
 }
 
 impl Vec3 {
@@ -26,8 +26,8 @@ impl Vec3 {
     }
 }
 
-impl From<SO3> for Vec3 {
-    fn from(v: SO3) -> Self {
+impl From<so3> for Vec3 {
+    fn from(v: so3) -> Self {
 //        todo()
         panic!("")
     }
