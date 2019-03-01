@@ -27,9 +27,8 @@ impl Vec3 {
 }
 
 impl From<so3> for Vec3 {
-    fn from(v: so3) -> Self {
-//        todo()
-        panic!("")
+    fn from(m: so3) -> Self {
+        Self{x: m.m.r3.y, y: m.m.r1.z, z: m.m.r1.x}
     }
 }
 

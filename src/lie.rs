@@ -1,13 +1,16 @@
 
-
+#![feature(range_contains)]
 
 //use crate::util::{todo};
 use crate::vec::{Vec3};
+use std::ops::{Range};
 
 use crate::mat::{Mat3};
 
+
+
 pub struct so3 {
-    m: Mat3
+    pub m: Mat3
 }
 
 impl From<Vec3> for so3 {
@@ -26,6 +29,8 @@ pub struct SO3 {
 }
 
 
+
+
 //impl From<Vec3> for SO3 {
 //    fn from(v: Vec3) -> Self {
 ////        todo()
@@ -36,6 +41,7 @@ pub struct SO3 {
 impl SO3 {
     fn exp(self) -> Self {
 //        todo()
+//        let q = (2...3).contains(&10);
         panic!("")
     }
 }

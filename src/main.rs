@@ -47,7 +47,15 @@ impl RotMat3 {
     }
 }
 
+fn max1() -> i32 {
+    let v: Vec<i32> = vec![0, 1];
+    let q = v.max();
+    println!("{}", q);
+    10
+}
 
 fn main() {
-    println!("Hello, world!");
+//    println!("Hello, world!");
+    println!("{}",max1())
 }
+
