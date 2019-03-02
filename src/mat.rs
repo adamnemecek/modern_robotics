@@ -17,7 +17,6 @@ impl Mat3 {
         panic!("")
 
     }
-
 }
 
 
@@ -26,7 +25,6 @@ pub struct Mat4 {
     r2: Vec4,
     r3: Vec4,
     r4: Vec4
-
 }
 
 impl Mat4 {

@@ -5,13 +5,11 @@
 use crate::vec::{Vec3};
 use std::ops::{Range};
 
-use crate::mat::{Mat3};
+use crate::mat::{Mat3, Mat4};
 
 
 
-pub struct so3 {
-    pub m: Mat3
-}
+pub struct so3(Mat3);
 
 impl From<Vec3> for so3 {
     fn from(v: Vec3) -> Self {
@@ -19,14 +17,17 @@ impl From<Vec3> for so3 {
         let r2 = Vec3{x: v.z, y: 0.0, z: -v.x};
         let r3 = Vec3{x: -v.y, y: v.x, z: 0.0};
         let m = Mat3{r1: r1, r2: r2,r3: r3};
-        Self{m: m}
+        Self{m}
     }
 
 }
 
-pub struct SO3 {
-    m: Mat3,
-}
+pub struct SO3(Mat3);
+
+pub struct se3(Mat4);
+pub struct SE3(Mat4);
+
+
 
 
 
@@ -44,12 +45,4 @@ impl SO3 {
 //        let q = (2...3).contains(&10);
         panic!("")
     }
-}
-
-pub struct se3 {
-
-}
-
-pub struct SE3 {
-
 }
