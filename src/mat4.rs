@@ -1,4 +1,4 @@
-use std::ops::{Add, Sub, Mul};
+use std::ops::{Add, Sub, Mul, Div};
 use num_traits::{Zero, One, Inv};
 use crate::vec4::Vec4;
 use crate::traits::{SquareMatrix, Shaped};
@@ -14,22 +14,27 @@ pub struct Mat4 {
 }
 
 impl Mat4 {
+    #[inline]
     pub fn new(w: Vec4, x: Vec4, y: Vec4, z: Vec4) -> Self {
         Self {w, x, y, z}
     }
 
+    #[inline]
     pub fn col1(&self) -> Vec4 {
         Vec4::new(self.w.w, self.x.w, self.y.w, self.z.w)
     }
 
+    #[inline]
     pub fn col2(&self) -> Vec4 {
         Vec4::new(self.w.x, self.x.x, self.y.x, self.z.x)
     }
 
+    #[inline]
     pub fn col3(&self) -> Vec4 {
         Vec4::new(self.w.y, self.x.y, self.y.y, self.z.y)
     }
 
+    #[inline]
     pub fn col4(&self) -> Vec4 {
         Vec4::new(self.w.z, self.x.z, self.y.z, self.z.z)
     }
@@ -95,6 +100,18 @@ impl Mul<f64> for Mat4 {
                        x: self.x * other, 
                        y: self.y * other, 
                        z: self.z * other }
+    }
+}
+
+impl Div<f64> for Mat4 {
+    type Output = Self;
+
+    #[inline]
+    fn div(self, other: f64) -> Self::Output {
+        Self::Output { w: self.w / other, 
+                       x: self.x / other, 
+                       y: self.y / other, 
+                       z: self.z / other }
     }
 }
 
