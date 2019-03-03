@@ -1,4 +1,4 @@
-use std::ops::{Add, Sub, Mul};
+use std::ops::{Add, Sub, Mul, Div};
 use num_traits::{Zero, One};
 use crate::traits::{Normed, Randomizable};
 
@@ -48,6 +48,16 @@ impl Mul<f64> for Vec4 {
                        x: self.x * other, 
                        y: self.y * other, 
                        z: self.z * other }
+    }
+}
+
+impl Div<f64> for Vec4 {
+    type Output = Self;
+    fn div(self, other: f64) -> Self::Output {
+        Self::Output { w: self.w / other, 
+                       x: self.x / other, 
+                       y: self.y / other, 
+                       z: self.z / other }
     }
 }
 
