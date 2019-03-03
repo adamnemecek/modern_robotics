@@ -70,7 +70,7 @@
 use std::ops::{Add, Sub};
 use num_traits::Zero;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub struct Vec3 {
     pub x: f64,
     pub y: f64,
@@ -101,7 +101,7 @@ impl Sub for Vec3 {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub struct Vec4 {
     pub w: f64,
     pub x: f64,
@@ -126,7 +126,7 @@ impl Zero for Vec4 {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub struct Vec6 {
     pub x: Vec3,
     pub y: Vec3,
@@ -149,14 +149,21 @@ impl Zero for Vec6 {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 pub struct Mat3 {
     pub x: Vec3,
     pub y: Vec3,
     pub z: Vec3
 }
 
-#[derive(Copy, Clone)]
+impl Add for Mat3 {
+    type Output = Self;
+    fn add(self, other: Self) -> Self::Output {
+        Self::Output { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
+    }
+}
+
+#[derive(Copy, Clone, PartialEq)]
 pub struct Mat4 {
     pub w: Vec4,
     pub x: Vec4,
