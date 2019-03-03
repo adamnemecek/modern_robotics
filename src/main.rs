@@ -70,18 +70,13 @@
 use std::ops::{Add, Sub};
 use num_traits::Zero;
 
+//// Vec4
+
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec3 {
     pub x: f64,
     pub y: f64,
     pub z: f64
-}
-
-impl Add for Vec3 {
-    type Output = Self;
-    fn add(self, other: Self) -> Self::Output {
-        unimplemented!()
-    }
 }
 
 impl Zero for Vec3 {
@@ -90,17 +85,25 @@ impl Zero for Vec3 {
     }
 
     fn is_zero(&self) -> bool {
-        unimplemented!()
+        *self == Self::zero()
+    }
+}
+
+impl Add for Vec3 {
+    type Output = Self;
+    fn add(self, other: Self) -> Self::Output {
+        Self::Output { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
     }
 }
 
 impl Sub for Vec3 {
     type Output = Self;
     fn sub(self, other: Self) -> Self::Output {
-        unimplemented!()
+        Self::Output { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z }
     }
 }
 
+//// Vec4
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec4 {
     pub w: f64,
@@ -112,7 +115,7 @@ pub struct Vec4 {
 impl Add for Vec4 {
     type Output = Self;
     fn add(self, other: Self) -> Self::Output {
-        unimplemented!()
+        Self::Output { w: self.w + other.w, x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
     }
 }
 
@@ -135,7 +138,14 @@ pub struct Vec6 {
 impl Add for Vec6 {
     type Output = Self;
     fn add(self, other: Self) -> Self::Output {
-        unimplemented!()
+        Self::Output { x: self.x + other.x, y: self.y + other.y }
+    }
+}
+
+impl Sub for Vec6 {
+    type Output = Self;
+    fn sub(self, other: Self) -> Self::Output {
+        Self::Output { x: self.x - other.x, y: self.y - other.y }
     }
 }
 
@@ -176,6 +186,26 @@ pub struct Mat4 {
 // }
 
 
+// typedef double mr_SO3_t[9];  // 3x3 matrix
+// typedef double mr_so3_t[9];  // 3x3 matrix
+// typedef double mr_SE3_t[16]; // 4x4 matrix
+// typedef double mr_se3_t[16]; // 4x4 matrix
+
+struct so3 {
+    m: Mat3
+}
+
+struct SO3 {
+    m: Mat3
+}
+
+struct se3 {
+    m: Mat4
+}
+
+struct SE3 {
+    m: Mat4
+}
 
 
 // fn add(a: &[i64], )
