@@ -12,9 +12,21 @@ pub struct Vec4 {
     pub z: f64,
 }
 
+
+impl Vec4 {
+    fn sum(&self) -> f64 {
+        self.w + self.x + self.y + self.z 
+    }
+
+    #[inline]
+    pub fn new(w: f64, x: f64, y: f64, z: f64) -> Self {
+        Self { w, x, y, z }
+    }
+}
+
 impl Zero for Vec4 {
     fn zero() -> Self {
-        Self { w: f64::zero(), x: f64::zero(), y: f64::zero(), z: f64::zero()} 
+        Self::new(f64::zero(), f64::zero(), f64::zero(), f64::zero()) 
     }
 
     fn is_zero(&self) -> bool {
@@ -25,20 +37,20 @@ impl Zero for Vec4 {
 impl Add for Vec4 {
     type Output = Self;
     fn add(self, other: Self) -> Self::Output {
-        Self::Output { w: self.w + other.w, 
-                       x: self.x + other.x, 
-                       y: self.y + other.y, 
-                       z: self.z + other.z }
+        Self::Output::new(self.w + other.w, 
+                            self.x + other.x, 
+                            self.y + other.y, 
+                            self.z + other.z)
     }
 }
 
 impl Sub for Vec4 {
     type Output = Self;
     fn sub(self, other: Self) -> Self::Output {
-        Self::Output { w: self.w - other.w, 
-                       x: self.x - other.x, 
-                       y: self.y - other.y, 
-                       z: self.z - other.z }
+        Self::Output::new(self.w - other.w, 
+                            self.x - other.x, 
+                            self.y - other.y, 
+                            self.z - other.z)
     }
 }
 
@@ -89,11 +101,6 @@ impl From<f64> for Vec4 {
     }
 }
 
-impl Vec4 {
-    fn sum(&self) -> f64 {
-        self.w + self.x + self.y + self.z 
-    }
-}
 impl Normed for Vec4 {
     type N = f64;
 
