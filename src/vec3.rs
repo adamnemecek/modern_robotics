@@ -32,6 +32,15 @@ impl Sub for Vec3 {
     }
 }
 
+impl Mul<f64> for Vec3 {
+    type Output = Self;
+    fn mul(self, other: f64) -> Self::Output {
+        Self::Output { x: self.x * other, 
+                       y: self.y * other, 
+                       z: self.z * other }
+    }
+}
+
 impl From<f64> for Vec3 {
     fn from(v: f64) -> Self {
         Self { x: v, y: v, z: v }
