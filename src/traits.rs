@@ -2,6 +2,6 @@ pub trait SquareMatrix {
     type N;
     fn trace(&self) -> Self::N;
 
-    // type Vec;
-    // fn diag(v: Vec) -> Self;
+    type V;
+    fn diag(v: Self::V) -> Self;
 }

@@ -60,7 +60,14 @@ impl SquareMatrix for Mat3 {
         self.x.x + self.y.y + self.z.z
     }
 
-    
+    type V = Vec3;
+    fn diag(v: Self::V) -> Self {
+        let mut s = Self::zero();
+        s.x.x = v.x;
+        s.y.y = v.y;
+        s.z.z = v.z;
+        s
+    }
 }
 
 // impl 
