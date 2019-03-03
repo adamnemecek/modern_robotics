@@ -77,6 +77,7 @@ impl Mul<f64> for Mat4 {
 
 impl Inv for Mat4 {
     type Output = Self;
+
     fn inv(self) -> Self::Output {
         let det = self.det();
         if det.is_zero() {
@@ -105,7 +106,6 @@ impl SquareMatrix for Mat4 {
         s.z.z = v.z;
         s
     }
-
 
     #[inline]
     fn transpose(&self) -> Self {

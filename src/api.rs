@@ -34,14 +34,13 @@ fn mr_SE3xSE3()
 fn mr_so3Squared() 
 fn mr_so3xso3()
 
-
-
 fn mr_so3xSO3()
 
 fn mr_MM()
+/// vector norm
 fn mr_Norm()
-fn mr_MatrixIsZero()
-fn mr_Trace()
+fn mr_MatrixIsZero() // done
+fn mr_Trace() 
 fn mr_getCofactor()
 fn mr_Determinant()
 fn mr_pinvadjoint()
