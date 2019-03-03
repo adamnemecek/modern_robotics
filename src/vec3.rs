@@ -31,3 +31,9 @@ impl Sub for Vec3 {
         Self::Output { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z }
     }
 }
+
+impl From<f64> for Vec3 {
+    fn from(v: f64) -> Self {
+        Self { x: v, y: v, z: v }
+    }
+}

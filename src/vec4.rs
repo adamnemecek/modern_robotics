@@ -39,3 +39,9 @@ impl Sub for Vec4 {
                        z: self.z - other.z }
     }
 }
+
+impl From<f64> for Vec4 {
+    fn from(v: f64) -> Self {
+        Self { w: v, x: v, y: v, z: v }
+    }
+}
