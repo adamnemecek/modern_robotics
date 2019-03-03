@@ -4,69 +4,123 @@
 // matrix.identity
 // identity*scalar
 
-fn mr_id() // set matrix of size n to 
-fn mr_idxs() // set matrix 
-fn mr_diag() //
-fn copy_matrix() // s = 
-fn copy_vector() // 
-fn extractmatrix() //
-fn insertmatrix() 
-fn transpose()
 
-fn vec+
-fn vec-
-fn mat+
 
-fn mr_ms()
+fn mr_ZeroMatrix()
+fn mr_Id() // set matrix of size n to 
+fn mr_IdxS() // set matrix 
+fn mr_Diag() //
+fn mr_CopyMatrix() // s = 
+fn mr_CopyVector() // 
+fn mr_ExtractMatrix() //
+fn mr_InsertMatrix() 
+fn mr_Transpose
+
+fn mr_AddVectors
+fn mr_SubtractVectors
+fn mr_AddMatrices
+
+fn mr_MS()
 
 
 /// so3 * scalar
-fn so3xs()
+fn mr_so3xS()
 
 // ??
-fn vs()
+fn mr_VS()
 // ??
-fn mv()
+fn mr_MV()
 
-fn se3xse3()
-fn s03squared() 
-fn so3xso3()
-fn so3xSO3()
+fn mr_SE3xSE3()
+fn mr_so3Squared() 
+fn mr_so3xso3()
+fn mr_so3xSO3()
 
-fn mm()
-fn norm()
-fn matrixiszero()
-fn trace()
-fn cofactor()
-fn determinant()
-fn pinvadoint()
-fn matrixinverse()
-fn pinv()
-fn rotinv()
+fn mr_MM()
+fn mr_Norm()
+fn mr_MatrixIsZero()
+fn mr_Trace()
+fn mr_getCofactor()
+fn mr_Determinant()
+fn mr_pinvadjoint()
+fn mr_Inverse()
+fn mr_Pinv()
 
-fn transtorp()
-fn rptotrans()
+/// chapter 3
+fn mr_RotInv()
 
-fn transinv()
+fn mr_TransToRp()
+fn mr_RpToTrans()
 
-fn se3ToVec()
-fn so3ToVec()
-fn vectoso3()
-fn vectose3()
+fn mr_TransInv()
 
-fn adjoint()
-fn adT()
-fn adjointT()
+fn mr_se3ToVec()
+fn mr_so3ToVec()
+fn mr_VecToso3()
+fn mr_VecTose3()
 
-fn axisang3()
-fn axisang6()
+fn mr_Adjoint()
+fn mr_AdT()
+fn mr_AdjointT()
 
-fn matrixexp3()
+fn mr_AxisAng3()
+fn mr_AxisAng6()
 
-fn matrixexp6()
+fn mr_MatrixExp3()
 
-fn screwtoaxis()
+fn mr_MatrixExp6()
 
-fn matrixlog3()
+fn mr_ScrewToAxis()
 
-fn matrixlog6()
+fn mr_MatrixLog3()
+
+fn mr_MatrixLog3()
+
+/// chapter 4
+/// 
+fn mr_FKinBody()
+
+fn mr_FKinSpace()
+
+/// Chapter 5
+
+fn mr_JacobianBody()
+
+fn mr_JacobianSpace()
+
+fn mr_IKinBody()
+
+fn mr_IKinSpace()
+
+/// chapter 8
+// ???
+fn mr_ad()
+
+fn mr_adT()
+
+fn mr_InverseDynamics()
+
+fn mr_MassMatrix()
+
+fn mr_VelQuadraticForces()
+
+fn mr_GravityForces()
+
+fn endeffectorforces()
+
+fn mr_ForwardDynamics()
+
+
+/// chapter 9
+/// 
+fn mr_CubicTimeScaling()
+
+fn mr_QuinticTimeScaling()
+
+fn mr_JointTrajectory()
+
+fn mr_ScrewTrajectory()
+
+fn mr_CartesianTrajectory()
+
+fn mr_ComputedTorque()
