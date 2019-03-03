@@ -1,6 +1,7 @@
 use std::ops::{Add, Sub, Mul, Div};
 use num_traits::{Zero, One};
-use crate::traits::{Normed, Randomizable};
+use crate::mat4::Mat4;
+use crate::traits::{Normed, Randomizable, OuterProduct};
 
 //// Vec4
 #[derive(Copy, Clone, PartialEq)]
@@ -61,13 +62,24 @@ impl Div<f64> for Vec4 {
     }
 }
 
+/// outer product
 impl Mul<Self> for Vec4 {
     type Output = Self;
-    fn mul(self, other: Vec4) -> Self::Output {
+    fn mul(self, other: Self) -> Self::Output {
         Self::Output { w: self.w * other.w, 
                        x: self.x * other.x, 
                        y: self.y * other.y, 
                        z: self.z * other.z }
+    }
+}
+
+impl OuterProduct for Vec4 {
+    type Output = Mat4;
+    fn outer(self, other: Self) -> Self::Output {
+        Self::Output { w: self * other.w,
+                       x: self * other.x,
+                       y: self * other.y,
+                       z: self * other.z }
     }
 }
 

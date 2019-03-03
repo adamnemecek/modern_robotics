@@ -1,5 +1,12 @@
+
 pub trait Shaped {
     fn shape() -> (usize, usize);
+}
+
+
+pub trait OuterProduct {
+    type Output;
+    fn outer(self, other: Self) -> Self::Output;
 }
 
 pub trait SquareMatrix {

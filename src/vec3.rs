@@ -1,6 +1,7 @@
 use std::ops::{Add, Sub, Mul, Div};
 use num_traits::{Zero, One};
-use crate::traits::{Normed, Randomizable};
+use crate::mat3::Mat3;
+use crate::traits::{Normed, Randomizable, OuterProduct};
 
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec3 {
@@ -58,6 +59,18 @@ impl Mul<Self> for Vec3 {
         Self::Output { x: self.x * other.x, 
                        y: self.y * other.y, 
                        z: self.z * other.z }
+    }
+}
+
+///
+/// outer product
+///
+impl OuterProduct for Vec3 {
+    type Output = Mat3;
+    fn outer(self, other: Self) -> Self::Output {
+        Self::Output { x: self * other.x,
+                       y: self * other.y,
+                       z: self * other.z }
     }
 }
 
