@@ -59,3 +59,73 @@
 //     println!("{}",max1())
 // }
 
+// typedef double mr_SO3_t[9];  // 3x3 matrix
+// typedef double mr_so3_t[9];  // 3x3 matrix
+// typedef double mr_SE3_t[16]; // 4x4 matrix
+// typedef double mr_se3_t[16]; // 4x4 matrix
+// typedef double mr_vec3_t[3]; // 3-vector (e.g., angular velocity)
+// typedef double mr_vec6_t[6]; // 6-vector (e.g., wrench or twist)
+// typedef double mr_mat6_t[36];// 6x6 matrix
+
+use std::ops::{Add};
+use num_traits::Zero;
+
+struct Vec3 {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64
+}
+
+struct Vec4 {
+    pub w: f64,
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
+}
+
+
+struct Mat3 {
+    data: [Vec3; 3]
+}
+
+struct Mat4 {
+    data: [Vec4;4]
+}
+
+// fn add(a: &[i64], )
+// struct Vec3 {
+//     data: [i64; 3]
+// }
+
+
+// impl Vec3 {
+    
+    
+//     fn new(v: [i64; 3]) -> Self {
+//         Self{ 0: v }
+//     }
+
+//     fn from(x: i64, y: i64, z: i64) {
+//         unimplemented!()
+//     }
+// }
+
+// impl Add for Vec3 {
+    // fn add(&self, other: &Self) -> Self {
+        // Self::from()
+    // }
+// }
+
+
+
+
+// struct so3(Vec3, Vec3, Vec3);
+
+// fn a(v: Vec3) {
+//     v.0[2];
+// }
+
+fn main() {
+    // let a = Vec3::new(0,2,3);
+    // // a.0
+}
