@@ -67,72 +67,34 @@
 // typedef double mr_vec6_t[6]; // 6-vector (e.g., wrench or twist)
 // typedef double mr_mat6_t[36];// 6x6 matrix
 
-use std::ops::{Add, Sub};
-use num_traits::Zero;
+use std::ops::{Add, Sub, Mul};
+use num_traits::{Zero, One};
+
+mod vec3;
+mod vec4;
+mod mat3;
+mod mat4;
+mod traits;
+
+
 
 //// Vec4
 
-#[derive(Copy, Clone, PartialEq)]
-pub struct Vec3 {
-    pub x: f64,
-    pub y: f64,
-    pub z: f64
-}
-
-impl Zero for Vec3 {
-    fn zero() -> Self {
-        Self { x: f64::zero(), y: f64::zero(), z: f64::zero()} 
-    }
-
-    fn is_zero(&self) -> bool {
-        *self == Self::zero()
-    }
-}
-
-impl Add for Vec3 {
-    type Output = Self;
-    fn add(self, other: Self) -> Self::Output {
-        Self::Output { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
-    }
-}
-
-impl Sub for Vec3 {
-    type Output = Self;
-    fn sub(self, other: Self) -> Self::Output {
-        Self::Output { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z }
-    }
-}
-
-//// Vec4
-#[derive(Copy, Clone, PartialEq)]
-pub struct Vec4 {
-    pub w: f64,
-    pub x: f64,
-    pub y: f64,
-    pub z: f64,
-}
-
-impl Add for Vec4 {
-    type Output = Self;
-    fn add(self, other: Self) -> Self::Output {
-        Self::Output { w: self.w + other.w, x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
-    }
-}
-
-impl Zero for Vec4 {
-    fn zero() -> Self {
-        Self { w: f64::zero(), x: f64::zero(), y: f64::zero(), z: f64::zero()} 
-    }
-
-    fn is_zero(&self) -> bool {
-        unimplemented!()
-    }
-}
 
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec6 {
     pub x: Vec3,
     pub y: Vec3,
+}
+
+impl Zero for Vec6 {
+    fn zero() -> Self {
+        Self { x: Vec3::zero(), y: Vec3::zero() } 
+    }
+
+    fn is_zero(&self) -> bool {
+        *self == Self::zero()
+    }
 }
 
 impl Add for Vec6 {
@@ -149,62 +111,42 @@ impl Sub for Vec6 {
     }
 }
 
-impl Zero for Vec6 {
-    fn zero() -> Self {
-        Self { x: Vec3::zero(), y: Vec3::zero() } 
-    }
 
-    fn is_zero(&self) -> bool {
-        unimplemented!()
-    }
-}
+
 
 #[derive(Copy, Clone, PartialEq)]
-pub struct Mat3 {
-    pub x: Vec3,
-    pub y: Vec3,
-    pub z: Vec3
-}
-
-impl Add for Mat3 {
-    type Output = Self;
-    fn add(self, other: Self) -> Self::Output {
-        Self::Output { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
-    }
-}
-
-#[derive(Copy, Clone, PartialEq)]
-pub struct Mat4 {
-    pub w: Vec4,
-    pub x: Vec4,
-    pub y: Vec4,
-    pub z: Vec4
-}
-
-// struct se3 {
-//     data
-// }
-
-
-// typedef double mr_SO3_t[9];  // 3x3 matrix
-// typedef double mr_so3_t[9];  // 3x3 matrix
-// typedef double mr_SE3_t[16]; // 4x4 matrix
-// typedef double mr_se3_t[16]; // 4x4 matrix
-
 struct so3 {
     m: Mat3
 }
 
+
+#[derive(Copy, Clone, PartialEq)]
 struct SO3 {
     m: Mat3
 }
 
+#[derive(Copy, Clone, PartialEq)]
 struct se3 {
     m: Mat4
 }
 
+
+#[derive(Copy, Clone, PartialEq)]
 struct SE3 {
     m: Mat4
+}
+
+impl Mul for SE3 {
+    type Output = Self;
+    fn mul(self, other: Self) -> Self::Output {
+        unimplemented!()
+    }
+}
+
+impl One for SE3 {
+    fn one() -> Self {
+        unimplemented!()
+    }
 }
 
 
