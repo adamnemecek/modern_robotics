@@ -41,9 +41,7 @@ impl Sub for Mat3 {
 
 impl One for Mat3 {
     fn one() -> Self {
-        Self { x: Vec3 { x: f64::one(), y: f64::zero(), z: f64::zero()} ,
-               y: Vec3 { x: f64::zero(), y: f64::one(), z: f64::zero()} ,
-               z: Vec3 { x: f64::zero(), y: f64::zero(), z: f64::one()}  }
+        Self::diag(Vec3::from(f64::one()))
     }
 }
 

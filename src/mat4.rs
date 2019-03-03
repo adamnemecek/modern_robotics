@@ -50,11 +50,7 @@ impl Sub for Mat4 {
 impl One for Mat4 {
     #[inline]
     fn one() -> Self {
-        let mut s = Self::zero();
-        s.w.w = f64::one();
-        s.x.x = f64::one();
-        s.y.y = 1.0;
-        s
+        Self::diag(Vec4::from(f64::one()))
     }
 }
 
