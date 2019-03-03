@@ -70,21 +70,8 @@ impl SquareMatrix for Mat3 {
     fn transpose(&self) -> Self {
         unimplemented!()
     }
-}
 
-impl Mul<f64> for Mat3 {
-    type Output = Self;
-
-    fn mul(self, other: f64) -> Self::Output {
-        Self::Output { x: self.x * other, 
-                       y: self.y * other, 
-                       z: self.z * other }
-    }
-}
-
-impl Mat3 {
-
-    fn det(&self) -> f64{
+    fn det(&self) -> Self::N {
         let a = self.x.x;
         let b = self.x.y;
         let c = self.x.z;
@@ -99,6 +86,21 @@ impl Mat3 {
 
         a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g)
     }
+}
+
+impl Mul<f64> for Mat3 {
+    type Output = Self;
+
+    fn mul(self, other: f64) -> Self::Output {
+        Self::Output { x: self.x * other, 
+                       y: self.y * other, 
+                       z: self.z * other }
+    }
+
+
+}
+
+impl Mat3 {
 
     fn inverse(&self) -> Self {
         let det = self.det();

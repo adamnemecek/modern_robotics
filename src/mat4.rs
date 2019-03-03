@@ -102,4 +102,7 @@ impl SquareMatrix for Mat4 {
         unimplemented!()
     }
 
+    fn det(&self) -> Self::N {
+        unimplemented!()
+    }
 }

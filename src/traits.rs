@@ -7,10 +7,10 @@ pub trait SquareMatrix {
 
     fn transpose(&self) -> Self;
 
-    
+    fn det(&self) -> Self::N;
 }
 // 
-// fn determinant(&self) -> N;
+
 // fn pinvadjoin(&self) -> Self;
 // fn inv(&self) -> Self;
 // fn pinv(&self) -> Self
