@@ -1,4 +1,11 @@
+pub trait Shaped {
+    fn shape() -> (usize, usize);
+}
+
 pub trait SquareMatrix {
+
+    
+
     type N;
     fn trace(&self) -> Self::N;
 

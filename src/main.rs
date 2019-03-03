@@ -78,6 +78,7 @@ mod se3;
 mod so3;
 mod traits;
 
+mod svd;
 
 
 //// Vec4

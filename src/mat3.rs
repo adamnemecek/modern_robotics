@@ -1,7 +1,7 @@
 use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One, Inv};
 use crate::vec3::Vec3;
-use crate::traits::SquareMatrix;
+use crate::traits::{SquareMatrix, Shaped};
 
 
 #[derive(Copy, Clone, PartialEq)]
@@ -108,6 +108,12 @@ impl Inv for Mat3 {
             
         }
         self
+    }
+}
+
+impl Shaped for Mat3 {
+    fn shape() -> (usize, usize) {
+        (3, 3)
     }
 }
 
