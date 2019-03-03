@@ -1,5 +1,5 @@
 use std::ops::{Add, Sub, Mul};
-use num_traits::{Zero, One};
+use num_traits::{Zero, One, Inv};
 use crate::vec4::Vec4;
 use crate::traits::SquareMatrix;
 
@@ -72,6 +72,17 @@ impl Mul<f64> for Mat4 {
                        x: self.x * other, 
                        y: self.y * other, 
                        z: self.z * other }
+    }
+}
+
+impl Inv for Mat4 {
+    type Output = Self;
+    fn inv(self) -> Self::Output {
+        let det = self.det();
+        if det.is_zero() {
+            
+        }
+        self
     }
 }
 

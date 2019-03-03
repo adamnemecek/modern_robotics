@@ -1,5 +1,5 @@
 use std::ops::{Add, Sub, Mul};
-use num_traits::{Zero, One};
+use num_traits::{Zero, One, Inv};
 use crate::vec3::Vec3;
 use crate::traits::SquareMatrix;
 
@@ -100,15 +100,20 @@ impl Mul<f64> for Mat3 {
 
 }
 
-impl Mat3 {
-
-    fn inverse(&self) -> Self {
+impl Inv for Mat3 {
+    type Output = Self;
+    fn inv(self) -> Self::Output {
         let det = self.det();
         if det.is_zero() {
             
         }
-        *self
+        self
     }
+}
+
+impl Mat3 {
+
+
 
     fn pinv(&self) -> Self {
         unimplemented!()
