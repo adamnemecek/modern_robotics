@@ -67,11 +67,11 @@
 // typedef double mr_vec6_t[6]; // 6-vector (e.g., wrench or twist)
 // typedef double mr_mat6_t[36];// 6x6 matrix
 
-use std::ops::{Add};
+use std::ops::{Add, Sub};
 use num_traits::Zero;
 
 #[derive(Copy, Clone)]
-struct Vec3 {
+pub struct Vec3 {
     pub x: f64,
     pub y: f64,
     pub z: f64
@@ -94,21 +94,82 @@ impl Zero for Vec3 {
     }
 }
 
-struct Vec4 {
+impl Sub for Vec3 {
+    type Output = Self;
+    fn sub(self, other: Self) -> Self::Output {
+        unimplemented!()
+    }
+}
+
+#[derive(Copy, Clone)]
+pub struct Vec4 {
     pub w: f64,
     pub x: f64,
     pub y: f64,
     pub z: f64,
 }
 
-
-struct Mat3 {
-    data: [Vec3; 3]
+impl Add for Vec4 {
+    type Output = Self;
+    fn add(self, other: Self) -> Self::Output {
+        unimplemented!()
+    }
 }
 
-struct Mat4 {
-    data: [Vec4;4]
+impl Zero for Vec4 {
+    fn zero() -> Self {
+        Self { w: f64::zero(), x: f64::zero(), y: f64::zero(), z: f64::zero()} 
+    }
+
+    fn is_zero(&self) -> bool {
+        unimplemented!()
+    }
 }
+
+#[derive(Copy, Clone)]
+pub struct Vec6 {
+    pub x: Vec3,
+    pub y: Vec3,
+}
+
+impl Add for Vec6 {
+    type Output = Self;
+    fn add(self, other: Self) -> Self::Output {
+        unimplemented!()
+    }
+}
+
+impl Zero for Vec6 {
+    fn zero() -> Self {
+        Self { x: Vec3::zero(), y: Vec3::zero() } 
+    }
+
+    fn is_zero(&self) -> bool {
+        unimplemented!()
+    }
+}
+
+#[derive(Copy, Clone)]
+pub struct Mat3 {
+    pub x: Vec3,
+    pub y: Vec3,
+    pub z: Vec3
+}
+
+#[derive(Copy, Clone)]
+pub struct Mat4 {
+    pub w: Vec4,
+    pub x: Vec4,
+    pub y: Vec4,
+    pub z: Vec4
+}
+
+// struct se3 {
+//     data
+// }
+
+
+
 
 // fn add(a: &[i64], )
 // struct Vec3 {
