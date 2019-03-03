@@ -10,11 +10,25 @@ pub struct Vec3 {
     pub z: f64
 }
 
-impl Zero for Vec3 {
-    fn zero() -> Self {
-        Self { x: f64::zero(), y: f64::zero(), z: f64::zero()} 
+impl Vec3 {
+    #[inline]
+    fn sum(&self) -> f64 {
+        self.x + self.y + self.z 
     }
 
+    #[inline]
+    pub fn new(x: f64, y: f64, z: f64) -> Self {
+        Self { x, y, z }
+    }
+}
+
+impl Zero for Vec3 {
+    #[inline]
+    fn zero() -> Self {
+        Self::new( f64::zero(), f64::zero(), f64::zero())
+    }
+        
+    #[inline]
     fn is_zero(&self) -> bool {
         *self == Self::zero()
     }
@@ -22,6 +36,7 @@ impl Zero for Vec3 {
 
 impl Add for Vec3 {
     type Output = Self;
+    #[inline]
     fn add(self, other: Self) -> Self::Output {
         Self::Output { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
     }
@@ -74,17 +89,18 @@ impl OuterProduct for Vec3 {
     }
 }
 
+// #[test]
+// fn test_outer() {
+//     let a = Vec3::new()
+// }
+
 impl From<f64> for Vec3 {
     fn from(v: f64) -> Self {
         Self { x: v, y: v, z: v }
     }
 }
 
-impl Vec3 {
-    fn sum(&self) -> f64 {
-        self.x + self.y + self.z 
-    }
-}
+
 impl Normed for Vec3 {
     type N = f64;
 
