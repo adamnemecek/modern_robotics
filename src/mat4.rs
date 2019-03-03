@@ -61,6 +61,16 @@ impl Mul for Mat4 {
     }
 }
 
+impl Mul<f64> for Mat4 {
+    type Output = Self;
+    fn mul(self, other: f64) -> Self::Output {
+        Self::Output { w: self.w * other, 
+                       x: self.x * other, 
+                       y: self.y * other, 
+                       z: self.z * other }
+    }
+}
+
 impl SquareMatrix for Mat4 {
     type N = f64;
     fn trace(&self) -> Self::N {

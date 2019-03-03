@@ -70,8 +70,15 @@ impl SquareMatrix for Mat3 {
     fn transpose(&self) -> Self {
         unimplemented!()
     }
+}
 
-    
+impl Mul<f64> for Mat3 {
+    type Output = Self;
+    fn mul(self, other: f64) -> Self::Output {
+        Self::Output { x: self.x * other, 
+                       y: self.y * other, 
+                       z: self.z * other }
+    }
 }
 
 impl Mat3 {
@@ -98,6 +105,10 @@ impl Mat3 {
             
         }
         *self
+    }
+
+    fn pinv(&self) -> Self {
+        unimplemented!()
     }
 }
 
