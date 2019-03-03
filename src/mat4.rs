@@ -17,6 +17,22 @@ impl Mat4 {
     pub fn new(w: Vec4, x: Vec4, y: Vec4, z: Vec4) -> Self {
         Self {w, x, y, z}
     }
+
+    pub fn col1(&self) -> Vec4 {
+        Vec4::new(self.w.w, self.x.w, self.y.w, self.z.w)
+    }
+
+    pub fn col2(&self) -> Vec4 {
+        Vec4::new(self.w.x, self.x.x, self.y.x, self.z.x)
+    }
+
+    pub fn col3(&self) -> Vec4 {
+        Vec4::new(self.w.y, self.x.y, self.y.y, self.z.y)
+    }
+
+    pub fn col4(&self) -> Vec4 {
+        Vec4::new(self.w.z, self.x.z, self.y.z, self.z.z)
+    }
 }
 
 impl Zero for Mat4 {
@@ -128,8 +144,7 @@ impl SquareMatrix for Mat4 {
 
     #[inline]
     fn transpose(&self) -> Self {
-        // let x = Vec4 { w }
-        unimplemented!()
+        Self::new(self.col1(), self.col2(), self.col3(), self.col4())
     }
 
     fn det(&self) -> Self::N {

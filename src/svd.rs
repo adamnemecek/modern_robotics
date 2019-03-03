@@ -11,10 +11,16 @@ pub struct SVD {
 
 impl SVD {
     pub fn new<A: SquareMatrix + Shaped>(a: A, k: Option<usize>) -> Self {
-        let shape = A::shape();
+        unimplemented!()
+        // let shape = A::shape();
 
-        let k = k.unwrap_or(shape.0.min(shape.1));
+        // let k = k.unwrap_or(shape.0.min(shape.1));
+
+        // for i in 0..k {
+        //     let m = A.clone();
+
+        // }
         
-        Self {}
+        // Self {}
     }
 }

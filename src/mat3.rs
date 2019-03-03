@@ -21,6 +21,18 @@ impl Mat3 {
     pub fn pinv(&self) -> Self {
         unimplemented!()
     }
+
+    pub fn col1(&self) -> Vec3 {
+        Vec3::new(self.x.x, self.y.x, self.z.x)
+    }
+
+    pub fn col2(&self) -> Vec3 {
+        Vec3::new(self.x.y, self.y.y, self.z.y)
+    }
+
+    pub fn col3(&self) -> Vec3 {
+        Vec3::new(self.x.z, self.y.z, self.z.z)
+    }
 }
 
 impl Zero for Mat3 {
@@ -80,7 +92,7 @@ impl SquareMatrix for Mat3 {
     }
 
     fn transpose(&self) -> Self {
-        unimplemented!()
+        Self::new(self.col1(), self.col2(), self.col3())
     }
 
     fn det(&self) -> Self::N {
