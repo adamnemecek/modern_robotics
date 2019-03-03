@@ -15,3 +15,9 @@ pub trait SquareMatrix {
 // fn inv(&self) -> Self;
 // fn pinv(&self) -> Self
 
+
+pub trait Normed {
+    type N;
+    fn norm(self) -> Self::N;
+}
+

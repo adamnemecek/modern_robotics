@@ -1,5 +1,6 @@
 use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One};
+use crate::traits::Normed;
 
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec3 {
@@ -41,8 +42,31 @@ impl Mul<f64> for Vec3 {
     }
 }
 
+
+impl Mul<Self> for Vec3 {
+    type Output = Self;
+    fn mul(self, other: Vec3) -> Self::Output {
+        Self::Output { x: self.x * other.x, 
+                       y: self.y * other.y, 
+                       z: self.z * other.z }
+    }
+}
+
 impl From<f64> for Vec3 {
     fn from(v: f64) -> Self {
         Self { x: v, y: v, z: v }
+    }
+}
+
+impl Vec3 {
+    fn sum(&self) -> f64 {
+        self.x + self.y + self.z 
+    }
+}
+impl Normed for Vec3 {
+    type N = f64;
+
+    fn norm(self) -> Self::N {
+        (self * self).sum()
     }
 }

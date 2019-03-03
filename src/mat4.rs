@@ -56,6 +56,8 @@ impl One for Mat4 {
 
 impl Mul for Mat4 {
     type Output = Self;
+
+    #[inline]
     fn mul(self, other: Self) -> Self::Output {
         unimplemented!()
     }
@@ -63,6 +65,8 @@ impl Mul for Mat4 {
 
 impl Mul<f64> for Mat4 {
     type Output = Self;
+
+    #[inline]
     fn mul(self, other: f64) -> Self::Output {
         Self::Output { w: self.w * other, 
                        x: self.x * other, 
@@ -73,11 +77,15 @@ impl Mul<f64> for Mat4 {
 
 impl SquareMatrix for Mat4 {
     type N = f64;
+
+    #[inline]
     fn trace(&self) -> Self::N {
         self.w.w + self.x.x + self.y.y + self.z.z
     }
 
     type V = Vec4;
+
+    #[inline]
     fn diag(v: Self::V) -> Self {
         let mut s = Self::zero();
         s.w.w = v.w;
@@ -87,6 +95,8 @@ impl SquareMatrix for Mat4 {
         s
     }
 
+
+    #[inline]
     fn transpose(&self) -> Self {
         // let x = Vec4 { w }
         unimplemented!()

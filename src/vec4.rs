@@ -1,5 +1,6 @@
 use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One};
+use crate::traits::Normed;
 
 //// Vec4
 #[derive(Copy, Clone, PartialEq)]
@@ -50,8 +51,31 @@ impl Mul<f64> for Vec4 {
     }
 }
 
+impl Mul<Self> for Vec4 {
+    type Output = Self;
+    fn mul(self, other: Vec4) -> Self::Output {
+        Self::Output { w: self.w * other.w, 
+                       x: self.x * other.x, 
+                       y: self.y * other.y, 
+                       z: self.z * other.z }
+    }
+}
+
 impl From<f64> for Vec4 {
     fn from(v: f64) -> Self {
         Self { w: v, x: v, y: v, z: v }
+    }
+}
+
+impl Vec4 {
+    fn sum(&self) -> f64 {
+        self.w + self.x + self.y + self.z 
+    }
+}
+impl Normed for Vec4 {
+    type N = f64;
+
+    fn norm(self) -> Self::N {
+        (self * self).sum()
     }
 }

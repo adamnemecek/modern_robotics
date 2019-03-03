@@ -74,6 +74,7 @@ impl SquareMatrix for Mat3 {
 
 impl Mul<f64> for Mat3 {
     type Output = Self;
+
     fn mul(self, other: f64) -> Self::Output {
         Self::Output { x: self.x * other, 
                        y: self.y * other, 
