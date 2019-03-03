@@ -70,10 +70,28 @@
 use std::ops::{Add};
 use num_traits::Zero;
 
+#[derive(Copy, Clone)]
 struct Vec3 {
     pub x: f64,
     pub y: f64,
     pub z: f64
+}
+
+impl Add for Vec3 {
+    type Output = Self;
+    fn add(self, other: Self) -> Self::Output {
+        unimplemented!()
+    }
+}
+
+impl Zero for Vec3 {
+    fn zero() -> Self {
+        Self { x: f64::zero(), y: f64::zero(), z: f64::zero()} 
+    }
+
+    fn is_zero(&self) -> bool {
+        unimplemented!()
+    }
 }
 
 struct Vec4 {
