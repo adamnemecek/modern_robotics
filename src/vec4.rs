@@ -2,6 +2,7 @@ use std::ops::{Add, Sub, Mul, Div};
 use num_traits::{Zero, One};
 use crate::mat4::Mat4;
 use crate::traits::{Normed, Randomizable, OuterProduct};
+use std::fmt;
 
 //// Vec4
 #[derive(Copy, Clone, PartialEq)]
@@ -93,6 +94,24 @@ impl OuterProduct for Vec4 {
                        y: other * self.y,
                        z: other * self.z }
     }
+}
+
+impl fmt::Debug for Vec4 {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, " [{:?}, {:?}, {:?}, {:?}]", self.w, self.x, self.y, self.z)
+    }
+}
+
+#[test]
+pub fn test_vec4_outer() {
+    let a = Vec4::new(1.0,2.0,3.0, 4.0);
+    let b = Vec4::new(2.0,3.0,4.0, 5.0);
+    let result = a.outer(b);
+    let expected = Mat4::new(Vec4::new(2.0, 3.0, 4.0, 5.0),
+                            Vec4::new(4.0, 6.0, 8.0, 10.0),
+                            Vec4::new(6.0, 9.0, 12.0, 15.0),
+                            Vec4::new(8.0, 12.0, 16.0, 20.0));
+    assert_eq!(expected, result);
 }
 
 impl From<f64> for Vec4 {

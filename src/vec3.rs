@@ -103,7 +103,7 @@ impl OuterProduct for Vec3 {
 }
 
 #[test]
-pub fn test_outer() {
+pub fn test_vec3_outer() {
     let a = Vec3::new(1.0,2.0,3.0);
     let b = Vec3::new(2.0,3.0,4.0);
     let result = a.outer(b);

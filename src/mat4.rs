@@ -2,6 +2,7 @@ use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One, Inv};
 use crate::vec4::Vec4;
 use crate::traits::{SquareMatrix, Shaped};
+use std::fmt;
 
 
 #[derive(Copy, Clone, PartialEq)]
@@ -10,6 +11,12 @@ pub struct Mat4 {
     pub x: Vec4,
     pub y: Vec4,
     pub z: Vec4
+}
+
+impl Mat4 {
+    pub fn new(w: Vec4, x: Vec4, y: Vec4, z: Vec4) -> Self {
+        Self {w, x, y, z}
+    }
 }
 
 impl Zero for Mat4 {
@@ -84,6 +91,12 @@ impl Inv for Mat4 {
             
         }
         self
+    }
+}
+
+impl fmt::Debug for Mat4 {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, " [{:?}, {:?}, {:?}, {:?}]", self.w, self.x, self.y, self.z)
     }
 }
 
