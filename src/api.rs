@@ -22,7 +22,6 @@ fn mr_AddMatrices
 
 fn mr_MS()
 
-
 /// so3 * scalar
 fn mr_so3xS()
 
@@ -34,6 +33,9 @@ fn mr_MV()
 fn mr_SE3xSE3()
 fn mr_so3Squared() 
 fn mr_so3xso3()
+
+
+
 fn mr_so3xSO3()
 
 fn mr_MM()
