@@ -88,10 +88,10 @@ impl Mul<Self> for Vec4 {
 impl OuterProduct for Vec4 {
     type Output = Mat4;
     fn outer(self, other: Self) -> Self::Output {
-        Self::Output { w: self * other.w,
-                       x: self * other.x,
-                       y: self * other.y,
-                       z: self * other.z }
+        Self::Output { w: other * self.w,
+                       x: other * self.x,
+                       y: other * self.y,
+                       z: other * self.z }
     }
 }
 

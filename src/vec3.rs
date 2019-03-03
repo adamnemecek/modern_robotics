@@ -99,27 +99,18 @@ impl OuterProduct for Vec3 {
         Self::Output { x: other * self.x,
                        y: other * self.y,
                        z: other * self.z }
-        
-	// return Self::Output{ x: Vec3::new(self.x * other.x, self.y * other.x, self.z * other.x), 
-    //                      y: Vec3::new(self.x * other.y, self.y * other.y, self.z * other.y), 
-    //                     z: Vec3::new(self.x * other.z, self.y * other.z, self.z * other.z)}
     }
 }
 
-// #[test]
+#[test]
 pub fn test_outer() {
     let a = Vec3::new(1.0,2.0,3.0);
     let b = Vec3::new(2.0,3.0,4.0);
     let result = a.outer(b);
-//     [[ 2  3  4]
-//  [ 4  6  8]
-//  [ 6  9 12]]
     let expected = Mat3::new(Vec3::new(2.0, 3.0, 4.0),
                             Vec3::new(4.0, 6.0, 8.0),
                             Vec3::new(6.0, 9.0, 12.0));
-    // assert!(expected == result);
-    println!("{:?}", result);
-    println!("{:?}", expected);
+    assert_eq!(expected, result);
 }
 
 impl From<f64> for Vec3 {
