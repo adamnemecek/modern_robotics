@@ -1,6 +1,6 @@
 use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One};
-use crate::traits::Normed;
+use crate::traits::{Normed, Randomizable};
 
 //// Vec4
 #[derive(Copy, Clone, PartialEq)]
@@ -77,5 +77,11 @@ impl Normed for Vec4 {
 
     fn norm(self) -> Self::N {
         (self * self).sum()
+    }
+}
+
+impl Randomizable for Vec4 {
+    fn rand() -> Self {
+        Self{w: f64::rand(), x: f64::rand(), y: f64::rand(), z: f64::rand()}
     }
 }

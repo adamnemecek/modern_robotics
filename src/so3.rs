@@ -6,6 +6,14 @@ struct so3 {
     // m: Mat3
 }
 
+impl Mul<Self> for so3 {
+    type Output = Self;
+
+    fn mul(self, other: so3) -> Self::Output {
+        unimplemented!()
+    }
+}
+
 impl Mul<SO3> for so3 {
     type Output = so3;
 

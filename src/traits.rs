@@ -21,3 +21,17 @@ pub trait Normed {
     fn norm(self) -> Self::N;
 }
 
+pub trait Randomizable {
+    fn rand() -> Self;
+}
+
+extern crate rand;
+use rand::Rng;
+
+impl Randomizable for f64 {
+    fn rand() -> Self {
+        let mut rng = rand::thread_rng();
+        rng.gen()
+    }
+}
+

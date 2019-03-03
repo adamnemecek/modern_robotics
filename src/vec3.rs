@@ -1,6 +1,6 @@
 use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One};
-use crate::traits::Normed;
+use crate::traits::{Normed, Randomizable};
 
 #[derive(Copy, Clone, PartialEq)]
 pub struct Vec3 {
@@ -68,5 +68,11 @@ impl Normed for Vec3 {
 
     fn norm(self) -> Self::N {
         (self * self).sum()
+    }
+}
+
+impl Randomizable for Vec3 {
+    fn rand() -> Self {
+        Self{x: f64::rand(), y: f64::rand(), z: f64::rand()}
     }
 }

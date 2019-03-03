@@ -20,6 +20,7 @@ impl Zero for Vec6 {
 
 impl Add for Vec6 {
     type Output = Self;
+
     fn add(self, other: Self) -> Self::Output {
         Self::Output { x: self.x + other.x, y: self.y + other.y }
     }
@@ -27,6 +28,7 @@ impl Add for Vec6 {
 
 impl Sub for Vec6 {
     type Output = Self;
+
     fn sub(self, other: Self) -> Self::Output {
         Self::Output { x: self.x - other.x, y: self.y - other.y }
     }
