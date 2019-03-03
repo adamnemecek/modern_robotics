@@ -38,9 +38,9 @@ impl Add for Vec4 {
     type Output = Self;
     fn add(self, other: Self) -> Self::Output {
         Self::Output::new(self.w + other.w, 
-                            self.x + other.x, 
-                            self.y + other.y, 
-                            self.z + other.z)
+                          self.x + other.x, 
+                          self.y + other.y, 
+                          self.z + other.z)
     }
 }
 
@@ -48,9 +48,9 @@ impl Sub for Vec4 {
     type Output = Self;
     fn sub(self, other: Self) -> Self::Output {
         Self::Output::new(self.w - other.w, 
-                            self.x - other.x, 
-                            self.y - other.y, 
-                            self.z - other.z)
+                          self.x - other.x, 
+                          self.y - other.y, 
+                          self.z - other.z)
     }
 }
 

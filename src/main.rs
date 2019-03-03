@@ -114,7 +114,7 @@ mod svd;
 // }
 
 
-
+use crate::vec3::test_outer;
 
 // struct so3(Vec3, Vec3, Vec3);
 
@@ -123,6 +123,7 @@ mod svd;
 // }
 
 fn main() {
+    test_outer();
     // let a = Vec3::new(0,2,3);
     // // a.0
 }

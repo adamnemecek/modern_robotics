@@ -2,6 +2,7 @@ use std::ops::{Add, Sub, Mul};
 use num_traits::{Zero, One, Inv};
 use crate::vec3::Vec3;
 use crate::traits::{SquareMatrix, Shaped};
+use std::fmt;
 
 
 #[derive(Copy, Clone, PartialEq)]
@@ -9,6 +10,17 @@ pub struct Mat3 {
     pub x: Vec3,
     pub y: Vec3,
     pub z: Vec3
+}
+
+impl Mat3 {
+
+    pub fn new(x: Vec3, y: Vec3, z: Vec3) -> Self {
+        Self {x, y, z}
+    }
+
+    pub fn pinv(&self) -> Self {
+        unimplemented!()
+    }
 }
 
 impl Zero for Mat3 {
@@ -100,6 +112,12 @@ impl Mul<f64> for Mat3 {
 
 }
 
+impl fmt::Debug for Mat3 {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, " [{:?}, {:?}, {:?}]", self.x, self.y, self.z)
+    }
+}
+
 impl Inv for Mat3 {
     type Output = Self;
     fn inv(self) -> Self::Output {
@@ -117,13 +135,6 @@ impl Shaped for Mat3 {
     }
 }
 
-impl Mat3 {
 
-
-
-    fn pinv(&self) -> Self {
-        unimplemented!()
-    }
-}
 
 // impl 
