@@ -67,13 +67,15 @@
 // typedef double mr_vec6_t[6]; // 6-vector (e.g., wrench or twist)
 // typedef double mr_mat6_t[36];// 6x6 matrix
 
-use std::ops::{Add, Sub, Mul};
-use num_traits::{Zero, One};
 
 mod vec3;
 mod vec4;
+mod vec6;
 mod mat3;
 mod mat4;
+
+mod se3;
+mod so3;
 mod traits;
 
 
@@ -81,73 +83,9 @@ mod traits;
 //// Vec4
 
 
-#[derive(Copy, Clone, PartialEq)]
-pub struct Vec6 {
-    pub x: Vec3,
-    pub y: Vec3,
-}
-
-impl Zero for Vec6 {
-    fn zero() -> Self {
-        Self { x: Vec3::zero(), y: Vec3::zero() } 
-    }
-
-    fn is_zero(&self) -> bool {
-        *self == Self::zero()
-    }
-}
-
-impl Add for Vec6 {
-    type Output = Self;
-    fn add(self, other: Self) -> Self::Output {
-        Self::Output { x: self.x + other.x, y: self.y + other.y }
-    }
-}
-
-impl Sub for Vec6 {
-    type Output = Self;
-    fn sub(self, other: Self) -> Self::Output {
-        Self::Output { x: self.x - other.x, y: self.y - other.y }
-    }
-}
 
 
 
-
-#[derive(Copy, Clone, PartialEq)]
-struct so3 {
-    m: Mat3
-}
-
-
-#[derive(Copy, Clone, PartialEq)]
-struct SO3 {
-    m: Mat3
-}
-
-#[derive(Copy, Clone, PartialEq)]
-struct se3 {
-    m: Mat4
-}
-
-
-#[derive(Copy, Clone, PartialEq)]
-struct SE3 {
-    m: Mat4
-}
-
-impl Mul for SE3 {
-    type Output = Self;
-    fn mul(self, other: Self) -> Self::Output {
-        unimplemented!()
-    }
-}
-
-impl One for SE3 {
-    fn one() -> Self {
-        unimplemented!()
-    }
-}
 
 
 // fn add(a: &[i64], )
