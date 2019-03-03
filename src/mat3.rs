@@ -66,6 +66,39 @@ impl SquareMatrix for Mat3 {
         s.z.z = v.z;
         s
     }
+
+    fn transpose(&self) -> Self {
+        unimplemented!()
+    }
+
+    
+}
+
+impl Mat3 {
+
+    fn det(&self) -> f64{
+        let a = self.x.x;
+        let b = self.x.y;
+        let c = self.x.z;
+
+        let d = self.y.x;
+        let e = self.y.x;
+        let f = self.y.x;
+
+        let g = self.z.x;
+        let h = self.z.y;
+        let i = self.z.z;
+
+        a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g)
+    }
+
+    fn inverse(&self) -> Self {
+        let det = self.det();
+        if det.is_zero() {
+            
+        }
+        *self
+    }
 }
 
 // impl 

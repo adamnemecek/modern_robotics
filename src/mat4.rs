@@ -76,4 +76,10 @@ impl SquareMatrix for Mat4 {
         s.z.z = v.z;
         s
     }
+
+    fn transpose(&self) -> Self {
+        // let x = Vec4 { w }
+        unimplemented!()
+    }
+
 }
